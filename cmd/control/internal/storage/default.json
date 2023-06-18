@@ -1,0 +1,8 @@
+{
+    "relay": "ws://127.0.0.1:7447",
+    "proxy": "",
+    "connect_timeout": "5s",
+    "ping_interval": "10s",
+    "private_key": "",
+    "agent_public_key_list": null
+}
