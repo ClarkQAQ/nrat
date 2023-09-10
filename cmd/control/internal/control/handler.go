@@ -354,7 +354,7 @@ func (o Os) IsAbsPath(path string) bool {
 			return false
 		}
 
-		return strings.HasPrefix(path[1:], ":\\")
+		return strings.HasPrefix(path[1:], ":/")
 	default:
 		return false
 	}
@@ -368,16 +368,5 @@ func (o Os) Shell() []string {
 		return []string{"C:\\windows\\system32\\cmd.exe", "/C"}
 	default:
 		return nil
-	}
-}
-
-func (o Os) Separator() string {
-	switch o {
-	case "linux", "darwin":
-		return "/"
-	case "windows":
-		return "\\"
-	default:
-		return ""
 	}
 }

@@ -137,7 +137,12 @@ var cmdList []*ControlCmd = []*ControlCmd{
 			if e != nil {
 				publishKey = "none"
 			}
-			c.Printf("private key: %s\r\n", utils.CutMore(n[6], 10))
+
+			if len(c.Args) < 1 {
+				c.Printf("private key: %s\r\n", utils.CutMore(n[6], 10))
+			} else {
+				c.Printf("private key: %s\r\n", n[6])
+			}
 			c.Printf("publish key: %s\r\n", publishKey)
 			return nil
 		},
@@ -412,7 +417,7 @@ var cmdList []*ControlCmd = []*ControlCmd{
 
 			c.Args = append([]string{
 				control.storage.Storage().ExecTimeout,
-			}, append(agentOs.Shell(), c.Args...)...)
+			}, append(agentOs.Shell(), strings.Join(c.Args, " "))...)
 
 			return control.publish(context.Background(), &model.Event{
 				Type:    "exec",

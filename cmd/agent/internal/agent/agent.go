@@ -60,12 +60,13 @@ func AgentUint(c *uboot.Context) (e error) {
 		broadcastInterval = 10 * time.Minute
 	}
 
+	// 定期广播自己
+	go agent.broadcastSelfLoop(broadcastInterval)
+
+	go agent.eventHandler()
 	if e := agent.subscribe(); e != nil {
 		return fmt.Errorf("subscribe failed: %w", e)
 	}
-
-	// 定期广播自己
-	go agent.broadcastSelfLoop(broadcastInterval)
 
 	agent.unostr.SetConnectEvent(func() {
 		if e := agent.subscribe(); e != nil {
@@ -73,7 +74,6 @@ func AgentUint(c *uboot.Context) (e error) {
 		}
 	})
 
-	go agent.eventHandler()
 	return nil
 }
 

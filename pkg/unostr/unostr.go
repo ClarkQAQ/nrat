@@ -138,7 +138,7 @@ func (u *Unostr) Connect() error {
 		return e
 	}
 
-	// u.relay.Connection.SetRawLog(ulog.Debug)
+	u.relay.Connection.SetRawLog(ulog.Debug)
 
 	if u.connectEvent != nil {
 		u.connectEvent()

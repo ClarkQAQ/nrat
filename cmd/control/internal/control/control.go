@@ -59,6 +59,8 @@ func ControlUint(c *uboot.Context) (e error) {
 		}
 	}
 
+	ulog.GlobalFormat().SetLevel(ulog.GlobalFormat().GetLevel() ^ ulog.LevelDebug)
+
 	// c.Printf("control init success: %v", control)
 
 	for {
