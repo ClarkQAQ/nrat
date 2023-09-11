@@ -2,7 +2,7 @@ module nrat
 
 go 1.20
 
-replace uw => /data/Code/Golang/uw
+replace uw => github.com/ClarkQAQ/uw v0.0.0-20230911090314-9617b4352e12
 
 require (
 	github.com/SaveTheRbtz/generic-sync-map-go v0.0.0-20230201052002-6c5833b989be
